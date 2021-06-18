@@ -12,19 +12,24 @@ public class LoginPage extends BasicPage{
 	}
 
 //	email address for username login
-	public WebElement emailAddress () {
+	public WebElement getemailAddress () {
 		return driver.findElement(By.name("username"));
 	}
 
 //	password for login
-	public WebElement passwordEl () {
+	public WebElement getpasswordElement () {
 		return driver.findElement(By.name("password"));
+	}
+	
+//	submit button
+	public WebElement getBtnSubmit() {
+		return driver.findElement(By.name("btn_submit"));
 	}
 	
 //	submitting the login credentials
 	public void submitCred (String username, String password) {
-		emailAddress().getAttribute(username);
-		passwordEl().getAttribute(password);
-		driver.findElement(By.name("btn_submit"));
+		getemailAddress().getAttribute(username);
+		getpasswordElement().getAttribute(password);
+		getBtnSubmit().click();		
 	}
 }
