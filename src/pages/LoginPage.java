@@ -27,8 +27,11 @@ public class LoginPage extends BasicPage{
 	}
 	
 //	submitting the login credentials
-	public void submitCred (String username, String password) {
+	public void submitCred (String username, String password) throws InterruptedException {
+		getemailAddress().clear();
 		getemailAddress().getAttribute(username);
+		Thread.sleep(500);
+		getpasswordElement().clear();
 		getpasswordElement().getAttribute(password);
 		getBtnSubmit().click();		
 	}
