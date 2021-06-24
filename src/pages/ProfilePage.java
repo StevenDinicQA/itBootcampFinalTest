@@ -95,7 +95,7 @@ public class ProfilePage extends BasicPage {
 	public void pictureUpload() throws InterruptedException {
 		driver.findElement(By.xpath("//a[@title=\"Uplaod\"]")).click();
 		WebElement upload = driver.findElement(By.xpath("//input [@type=\"file\"]"));
-		upload.sendKeys("C:\\\\Users\\\\Stevan\\\\Desktop\\\\algr.jpg");
+		upload.sendKeys("D:\\QA\\Projects\\Project1\\itBootcampFinalTest\\img\\algr.jpg");
 		Thread.sleep(2000);
 	}
 
