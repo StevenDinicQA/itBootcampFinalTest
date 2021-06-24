@@ -13,21 +13,22 @@ public class NotificationSysPage extends BasicPage {
 		super(driver, js);
 	}
 
-//	popup message when logged in or entering wrong credentials
+//	popup message when entering right or wrong credentials
 	public WebElement getalertMsg() {
-		return driver.findElement(By.xpath("//*[contains(@class, 'alert--success')]"));
+		return driver
+				.findElement(By.xpath("//*[contains(@class, 'alert--success')] or contains(@class, 'alert--danger')]"
+						+ "[contains(@style,'display: block')]"));
 	}
 
 //	getting visible text message
-	public String getPopupMsg () {
+	public String getPopupMsg() {
 		return driver.findElement(By.xpath("//div[@class='div_msg']/ul/li")).getText();
 	}
-	
+
 //	waiter for the message to disappear
-	public void disappearMsg () {
+	public void disappearMsg() {
 		WebDriverWait waiter = new WebDriverWait(driver, 20);
-		WebElement msg = driver.findElement(By.xpath("//div[@class=\"system_message alert]"));
-		
-		waiter.until(ExpectedConditions.attributeToBe(msg, "display:", "none"));
+		WebElement msg = getalertMsg();
+		waiter.until(ExpectedConditions.attributeContains(msg, "style", "display: none"));
 	}
 }
