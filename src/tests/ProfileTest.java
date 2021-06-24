@@ -25,17 +25,17 @@ public class ProfileTest extends BasicTest {
 
 		driver.get(baseUrl + "member/profile");
 		Thread.sleep(1500);
-		
+
 //		editing profile details
 		profPage.profileCred("Mark", "Markovich", "Washington St. 23", "2225559686", "21568", "United States",
 				"Waterford", "Waterford");
 		Thread.sleep(1500);
 		profPage.getSaveBtn().click();
-		
+
 //		asserting if the right message appeard
 		sa.assertEquals(notSysPage.getPopupMsg(), "Setup Successful");
 		notSysPage.disappearMsg();
-		
+
 //		logout and assert of the logout message appearance
 		authPage.AccClick();
 		Thread.sleep(500);
@@ -44,9 +44,9 @@ public class ProfileTest extends BasicTest {
 		sa.assertEquals(notSysPage.getPopupMsg(), "Logout Successfull");
 		notSysPage.disappearMsg();
 	}
-	
+
 	@Test
-	public void profileImgChange () throws InterruptedException {
+	public void profileImgChange() throws InterruptedException {
 		driver.get(baseUrl + "guest-user/login-form");
 //		closes the popup button
 		locPopPage.getCloseBtn();
@@ -59,10 +59,10 @@ public class ProfileTest extends BasicTest {
 		SoftAssert sa = new SoftAssert();
 		sa.assertEquals(notSysPage.getPopupMsg(), "Login Successful");
 		notSysPage.disappearMsg();
-		
+
 		driver.get(baseUrl + "member/profile");
 		Thread.sleep(1500);
-		
+
 //		uploading image function and selecting the image from the folder
 		profPage.getUploadBtn();
 		Thread.sleep(700);
@@ -70,12 +70,12 @@ public class ProfileTest extends BasicTest {
 		Thread.sleep(700);
 		sa.assertEquals(notSysPage.getPopupMsg(), "Profile Image Uploaded Successfully");
 		notSysPage.disappearMsg();
-		
+
 //		deleting the picture function
 		profPage.deletePictureBtn();
 		sa.assertEquals(notSysPage.getPopupMsg(), "Profile Image Deleted Successfully");
 		notSysPage.disappearMsg();
-		
+
 //		logout and assert of the logout message appearance
 		authPage.AccClick();
 		Thread.sleep(500);
@@ -84,5 +84,4 @@ public class ProfileTest extends BasicTest {
 		sa.assertEquals(notSysPage.getPopupMsg(), "Logout Successfull");
 		notSysPage.disappearMsg();
 	}
-
 }
