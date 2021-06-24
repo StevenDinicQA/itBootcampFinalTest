@@ -20,7 +20,7 @@ public class ProfileTest extends BasicTest {
 
 //		checking if the message appears on login and waiter for it to disappear
 		SoftAssert sa = new SoftAssert();
-		sa.assertEquals(notSysPage.getPopupMsg(), "Login Successful");
+		sa.assertEquals(notSysPage.getalertMsg(), "Login Successful");
 		notSysPage.disappearMsg();
 
 		driver.get(baseUrl + "member/profile");
@@ -33,7 +33,7 @@ public class ProfileTest extends BasicTest {
 		profPage.getSaveBtn().click();
 
 //		asserting if the right message appeard
-		sa.assertEquals(notSysPage.getPopupMsg(), "Setup Successful");
+		sa.assertEquals(notSysPage.getalertMsg(), "Setup Successful");
 		notSysPage.disappearMsg();
 
 //		logout and assert of the logout message appearance
@@ -41,7 +41,7 @@ public class ProfileTest extends BasicTest {
 		Thread.sleep(500);
 		authPage.LogoutClick();
 		Thread.sleep(2000);
-		sa.assertEquals(notSysPage.getPopupMsg(), "Logout Successfull");
+		sa.assertEquals(notSysPage.getalertMsg(), "Logout Successfull");
 		notSysPage.disappearMsg();
 	}
 
@@ -57,7 +57,7 @@ public class ProfileTest extends BasicTest {
 
 //		checking if the message appears on login and waiter for it to disappear
 		SoftAssert sa = new SoftAssert();
-		sa.assertEquals(notSysPage.getPopupMsg(), "Login Successful");
+		sa.assertEquals(notSysPage.getalertMsg(), "Login Successful");
 		notSysPage.disappearMsg();
 
 		driver.get(baseUrl + "member/profile");
@@ -68,12 +68,12 @@ public class ProfileTest extends BasicTest {
 		Thread.sleep(700);
 		profPage.pictureUpload();
 		Thread.sleep(700);
-		sa.assertEquals(notSysPage.getPopupMsg(), "Profile Image Uploaded Successfully");
+		sa.assertEquals(notSysPage.getalertMsg(), "Profile Image Uploaded Successfully");
 		notSysPage.disappearMsg();
 
 //		deleting the picture function
 		profPage.deletePictureBtn();
-		sa.assertEquals(notSysPage.getPopupMsg(), "Profile Image Deleted Successfully");
+		sa.assertEquals(notSysPage.getalertMsg(), "Profile Image Deleted Successfully");
 		notSysPage.disappearMsg();
 
 //		logout and assert of the logout message appearance
@@ -81,7 +81,7 @@ public class ProfileTest extends BasicTest {
 		Thread.sleep(500);
 		authPage.LogoutClick();
 		Thread.sleep(2000);
-		sa.assertEquals(notSysPage.getPopupMsg(), "Logout Successfull");
+		sa.assertEquals(notSysPage.getalertMsg(), "Logout Successfull");
 		notSysPage.disappearMsg();
 	}
 }
