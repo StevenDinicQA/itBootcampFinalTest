@@ -44,18 +44,22 @@ public class ProfilePage extends BasicPage {
 	}
 
 //	get country list -- dropdown select needed afterwards
-	public WebElement getCountry() {
-		return driver.findElement(By.name("user_country_id"));
+	public Select getCountry() {
+		Select country = new Select (driver.findElement(By.name("user_country_id")));
+		
+		return country;
 	}
 
 //	get state list -- dropdown select needed afterwards
-	public WebElement getState() {
-		return driver.findElement(By.name("user_state_id"));
+	public Select getState() {
+		Select state = new Select (driver.findElement(By.name("user_state_id")));
+		return state;
 	}
 
 //	get city list -- dropdown select needed afterwards
-	public WebElement getCity() {
-		return driver.findElement(By.name("user_city"));
+	public Select getCity() {
+		Select city = new Select (driver.findElement(By.name("user_city")));
+		return city;
 	}
 
 //	get save button
@@ -105,4 +109,38 @@ public class ProfilePage extends BasicPage {
 		js.executeScript("arguments[0].click();", remBtn);
 	}
 
+//	updating profile credentials
+	public void profileCred (String name, String surname, String address, String phoneNum, 
+			String zipCode, String country, String state, String city) throws InterruptedException {
+		
+			getName().clear();
+			getName().sendKeys("name");
+			Thread.sleep(1000);
+			
+			getSurname().clear();
+			getSurname().sendKeys("surname");
+			Thread.sleep(1000);
+			
+			getAddress().clear();
+			getAddress().sendKeys("address");
+			Thread.sleep(1000);
+			
+			getPhone().clear();
+			getPhone().sendKeys(phoneNum);
+			Thread.sleep(1000);
+			
+			getZipCode().click();
+			getZipCode().clear();
+			getZipCode().sendKeys(zipCode);
+			Thread.sleep(1000);
+			
+			getCountry().selectByVisibleText(country);
+			Thread.sleep(1000);
+			
+			getState().selectByVisibleText(state);
+			Thread.sleep(1000);
+			
+			getCity().selectByVisibleText(city);
+			Thread.sleep(1000);
+	}
 }
