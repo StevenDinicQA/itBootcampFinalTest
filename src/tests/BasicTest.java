@@ -1,9 +1,15 @@
 package tests;
 
 import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 //import org.apache.commons.io.FileUtils;
 //import org.openqa.selenium.OutputType;
 //import org.openqa.selenium.TakesScreenshot;
@@ -58,12 +64,16 @@ public abstract class BasicTest {
 	}
 	
 	@AfterMethod
-	public void cleanup() throws InterruptedException {
-//		
-//		TakesScreenshot scrShot =((TakesScreenshot)driver);
-//		File SrcFile=scrShot.getScreenshotAs(OutputType<X>.FILE);
-//		File DestFile=new File("D:\\QA\\Projects\\Project1\\itBootcampFinalTest\\screenshots");
+	public void cleanup() throws InterruptedException, IOException {
 		
+		TakesScreenshot scrShot =((TakesScreenshot)driver);
+		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+		File DestFile=new File("D:\\QA\\Projects\\Project1\\itBootcampFinalTest\\screenshots");
+		
+		LocalDateTime locdt = LocalDateTime.now();
+		DateTimeFormatter dtform = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+		
+		FileUtils.copyFile(SrcFile, new File("./screenshots/"+locdt.format(dtform)+".png"));
 		
 		Thread.sleep(4000);
 		driver.quit();
