@@ -26,6 +26,16 @@ public class LoginPage extends BasicPage{
 		return driver.findElement(By.name("btn_submit"));
 	}
 	
+//	login button
+	public WebElement getLoginBtn () {
+		return driver.findElement(By.xpath("//*[@class=\"accounts-link accounts-popup\"]/ul/li[2]/a"));
+	}
+	
+//	clicking on login button
+	public void loginBtn () {
+		getLoginBtn().click();
+	}
+	
 //	submitting the login credentials
 	public void submitCred (String username, String password) throws InterruptedException {
 		getemailAddress().clear();
