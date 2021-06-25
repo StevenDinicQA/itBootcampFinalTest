@@ -71,4 +71,21 @@ public class MealsTest extends BasicTest{
 		sa.assertEquals(notSysPage.getalertMsg(), "Product has been added to your favorites!");
 		notSysPage.disappearMsg();
 	}	
+	
+	@Test
+	public void clearCart () throws InterruptedException {
+		
+//		getting the meal
+		driver.get(baseUrl+ "meals");
+		Thread.sleep(1000);
+		
+//		adding the locatiion
+		locPopPage.locationName("City Center - Albany");
+		locPopPage.popupClose();
+		
+		
+		
+		
+		
+	}
 }
