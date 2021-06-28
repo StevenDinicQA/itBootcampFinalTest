@@ -22,7 +22,8 @@ public class NotificationSysPage extends BasicPage {
 
 //	getting visible text message
 	public String getPopupMsg() {
-		return driver.findElement(By.xpath("//div[@class='div_msg']/ul/li")).getText();
+		return driver.findElement(By.xpath("//*[contains(@class, 'alert--success')] or contains(@class, 'alert--danger')]\"\r\n" + 
+				"						+ \"[contains(@style,'display: block')]")).getText();
 	}
 
 //	waiter for the message to disappear
