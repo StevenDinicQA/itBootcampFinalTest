@@ -30,10 +30,11 @@ public class MealsTest extends BasicTest {
 		SoftAssert sa = new SoftAssert();
 		sa.assertEquals(notSysPage.getalertMsg(), "The Following Errors Occurred: Please Select Location");
 		notSysPage.disappearMsg();
+		Thread.sleep(2000);
 
 //		adding the locatiion
+		locPopPage.clickLocation();
 		locPopPage.locationName("City Center - Albany");
-		locPopPage.popupClose();
 
 //		clears item number and adds random number of items to the cart again
 		mealPage.getQuantity().clear();
